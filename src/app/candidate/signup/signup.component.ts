@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidateserviceService } from "../candidateservice.service";
 import { FormGroup,FormControl  } from "@angular/forms";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +18,8 @@ export class SignupComponent implements OnInit {
     number : new FormControl(''),
     useraddress : new FormControl('')
   })
-  constructor(private candidate : CandidateserviceService) { }
+  constructor(private candidate : CandidateserviceService, private route: ActivatedRoute,
+    private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +30,7 @@ export class SignupComponent implements OnInit {
       this.candidate.addCandidateDetails(this.candidateData.value).subscribe(data =>{
         this.alert=true;
         this.candidateData.reset();
+        this.router.navigate(['/list']);
       })
 
       

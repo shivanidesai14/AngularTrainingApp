@@ -23,13 +23,14 @@ export class LoginComponent implements OnInit {
   loginCandidate()
   {
     console.log("data",this.candidateData.value.email);
-    // this.candidate.getCandidate().subscribe(data=>{
-    //   this.data=data;
-    //   const data = data.find()
-    //   if(this.candidateData.value.email == this.data.email && this.candidateData.value.password== this.data.password)
-    //   {
-    //     console.log("login successful");
-    //   }
-    // })
+    this.candidate.getCandidate().subscribe(data=>{
+      this.data=data;
+     console.log(this.data);
+     
+      // if(this.candidateData.value.email == this.data.email && this.candidateData.value.password== this.data.password)
+      // {
+      //   console.log("login sucsssssfcessful");
+      // }
+    })
   }
 }
