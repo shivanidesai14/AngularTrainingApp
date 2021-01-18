@@ -7,12 +7,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CandidateModule } from "./candidate/candidate.module";
 import { CandidateRoutingModule } from "./candidate/candidate-routing.module";
 import { HttpClientModule } from "@angular/common/http";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+   
    
    
   ],
@@ -22,7 +26,9 @@ import { HttpClientModule } from "@angular/common/http";
     NgbModule,
     CandidateRoutingModule,
     CandidateModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

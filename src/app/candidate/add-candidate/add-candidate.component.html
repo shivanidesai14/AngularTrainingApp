@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="jumbotron ">
+    <h1 class="display-8">Add Candidate</h1>
+  
+  </div>
+  <form [formGroup]="addCandidate" (ngSubmit)="collectCandidate()">
+  
+    <div style="margin:20px">
+      <div class="form-group col-sm-4">
+        <label>Candidate Name</label>
+        <input type="text" class="form-control" formControlName="username" placeholder="Enter Candidate Name">
+  
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Candidate Email</label>
+        <input type="text" class="form-control" formControlName="email" placeholder="Enter Candidate Email">
+  
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Candidate Password</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter Candidate Password">
+  
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Candidate Address</label>
+        <input type="text" class="form-control" formControlName="useraddress" placeholder="Enter Candidate Address">
+      </div>
+  
+      <div class="form-group col-sm-4">
+        <label>Candidate Contact Number</label>
+        <input type="text" class="form-control" formControlName="number"  placeholder="Enter Candidate Contact Number">
+  
+      </div>
+  
+     
+      <button type="submit" class="btn btn-primary">Submit</button><br><br>
+      <div class="alert alert-success" role="alert" *ngIf="alert">
+        data successfully added
+      </div>
+    </div>
+  
+  </form>

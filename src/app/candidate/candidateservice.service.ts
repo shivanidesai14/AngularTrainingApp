@@ -19,4 +19,17 @@ getCandidate()
 {
     return this.http.get(this.url);
 }
+deleteCandidate(id : any)
+{
+  return this.http.delete(this.url+"/" + id);
+  
+}
+getCandidateById(id:any)
+{
+  return this.http.get(this.url+"/"+id);
+}
+updateCandidate(id:any,data:any)
+{
+  return this.http.put(this.url+"/"+id,data);
+}
 }

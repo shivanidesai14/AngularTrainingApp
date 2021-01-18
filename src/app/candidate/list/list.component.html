@@ -6,8 +6,8 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Address</th>
-        <th scope="col">Contgact Number</th>
-      
+        <th scope="col">Contact Number</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +17,9 @@
         <td>{{item.email}}</td>
         <td>{{item.useraddress}}</td>
         <td>{{item.number}}</td>
-      
+   
+        <td><button type="submit" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
+          <button type="submit" (click)="onDelete(item.id)">Delete</button></td>
       </tr>
     </tbody>
 </table>

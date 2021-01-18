@@ -7,15 +7,20 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ListComponent } from './list/list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddCandidateComponent } from './add-candidate/add-candidate.component';
+import { UpdateCandidateComponent } from './update-candidate/update-candidate.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, ListComponent, NavbarComponent],
+  declarations: [LoginComponent, SignupComponent, ListComponent, NavbarComponent, AddCandidateComponent, UpdateCandidateComponent],
   imports: [
     CommonModule,
     CandidateRoutingModule,
-    ReactiveFormsModule
-  
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   exports : [
     LoginComponent
