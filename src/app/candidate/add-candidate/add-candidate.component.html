@@ -9,33 +9,69 @@
       <div class="form-group col-sm-4">
         <label>Candidate Name</label>
         <input type="text" class="form-control" formControlName="username" placeholder="Enter Candidate Name">
-  
+        <span class="text-danger"
+        *ngIf="(registerFormControl.username.touched || submitted) && registerFormControl.username.errors?.required">
+        Name is required
+    </span>
       </div>
       <div class="form-group col-sm-4">
         <label>Candidate Email</label>
         <input type="text" class="form-control" formControlName="email" placeholder="Enter Candidate Email">
-  
+        <span class="text-danger"
+        *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
+        Email is required
+    </span>
+    <span class="text-danger"
+        *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+        Enter a valid email address
+    </span>
       </div>
-      <div class="form-group col-sm-4">
+      <div class="form-group col-sm-4 ">
         <label>Candidate Password</label>
-        <input type="password" class="form-control" formControlName="password" placeholder="Enter Candidate Password">
-  
+        <input type="text" class="form-control" formControlName="password" placeholder="Enter Candidate Password">
+        <span class="text-danger"
+        *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
+        Password is required
+    </span>
+    <span class="text-danger"
+    *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.pattern">
+    Enter a valid Password
+    <ul class="text-muted">
+      <li>At least 8 characters in length</li>
+        <li>Lowercase letters</li>
+        <li>Uppercase letters</li>
+        <li>Numbers Special characters
+        
+      </li>
+    </ul>
+</span>
       </div>
       <div class="form-group col-sm-4">
         <label>Candidate Address</label>
         <input type="text" class="form-control" formControlName="useraddress" placeholder="Enter Candidate Address">
+        <span class="text-danger"
+        *ngIf="(registerFormControl.useraddress.touched || submitted) && registerFormControl.useraddress.errors?.required">
+        Address is required
+    </span>
       </div>
   
       <div class="form-group col-sm-4">
         <label>Candidate Contact Number</label>
         <input type="text" class="form-control" formControlName="number"  placeholder="Enter Candidate Contact Number">
-  
+        <span class="text-danger"
+        *ngIf="(registerFormControl.number.touched || submitted) && registerFormControl.number.errors?.required">
+        Mobile number is required
+    </span>
+    <span class="text-danger"
+        *ngIf="registerFormControl.number.touched && registerFormControl.number.errors?.pattern">
+        Enter a valid mobile number
+    </span>
       </div>
   
      
       <button type="submit" class="btn btn-primary">Submit</button><br><br>
       <div class="alert alert-success" role="alert" *ngIf="alert">
-        data successfully added
+        Data successfully added
       </div>
     </div>
   

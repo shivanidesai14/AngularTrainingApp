@@ -23,25 +23,64 @@
 		</div>
 		<div class="or-seperator"><b>or</b></div>
         <div class="form-group">
-        	<input type="text" class="form-control input-lg"  formControlName="username" placeholder="Candidate Username" required="required">
+            <input type="text" class="form-control input-lg"  formControlName="username" placeholder="Candidate Username" required="required">
+            <span class="text-danger"
+            *ngIf="(registerFormControl.username.touched || submitted) && registerFormControl.username.errors?.required">
+            Name is required
+          </span>
         </div>
 		<div class="form-group">
-        	<input type="email" class="form-control input-lg"  formControlName="email" placeholder="Candidate Email Address" required="required">
+            <input type="email" class="form-control input-lg"  formControlName="email" placeholder="Candidate Email Address" required="required">
+            <span class="text-danger"
+            *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
+            Email is required
+          </span>
+          <span class="text-danger" *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+            Enter a valid email address
+          </span>
         </div>
 		<div class="form-group">
             <input type="password" class="form-control input-lg"  formControlName="password" placeholder="Candidate Password" required="required">
+            <span class="text-danger"
+            *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
+            Password is required
+          </span>
+          <span class="text-danger"
+            *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.pattern">
+            Enter a valid Password
+            <ul class="text-muted">
+              <li>At least 8 characters in length</li>
+              <li>Lowercase letters</li>
+              <li>Uppercase letters</li>
+              <li>Numbers Special characters
+    
+              </li>
+            </ul>
+          </span>
         </div>
         <div class="form-group">
-        	<input type="number" class="form-control input-lg"  formControlName="number" placeholder="Candidate Mobile Number" required="required">
+            <input type="number" class="form-control input-lg"  formControlName="number" placeholder="Candidate Mobile Number" required="required">
+            <span class="text-danger"
+            *ngIf="(registerFormControl.number.touched || submitted) && registerFormControl.number.errors?.required">
+            Mobile number is required
+          </span>
+          <span class="text-danger"
+            *ngIf="registerFormControl.number.touched && registerFormControl.number.errors?.pattern">
+            Enter a valid mobile number
+          </span>
         </div>
         <div class="form-group">
-        	<input type="text" class="form-control input-lg"  formControlName="useraddress" placeholder="Candidate Address" required="required">
+            <input type="text" class="form-control input-lg"  formControlName="useraddress" placeholder="Candidate Address" required="required">
+            <span class="text-danger"
+            *ngIf="(registerFormControl.useraddress.touched || submitted) && registerFormControl.useraddress.errors?.required">
+            Address is required
+          </span>
         </div>
        
             <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Sign Up</button>
         <div></div>
         <div class="alert alert-success" role="alert" *ngIf="alert">
-            data successfully added
+            Signed Up Successfully
            </div>
     </form>
     <div class="text-center">Already have an account? <a routerLink='/login'>Login here</a></div>
