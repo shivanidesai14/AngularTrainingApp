@@ -1,26 +1,32 @@
 <app-navbar></app-navbar>
+<div class="jumbotron " style="margin-bottom: 0rem;">
+  <h1 class="display-5">List Candidate</h1>
+
+</div>
 <div>
-  <div class="d-flex flex-row-reverse bd-highlight mb-2">
+  <div class="d-flex  bd-highlight mb-2">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
+      <input type="text" style="margin-top: 12%;margin-left: 5%;" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
     </div>
+    
     <div class="p-2 bd-highlight">
-      <select (change)="onTableSizeChange($event)" class="custom-select">
+      <select (change)="onTableSizeChange($event)" class="custom-select" style="margin-left: 30%;margin-top: 30%;">
         <option *ngFor="let size of tableSizes" [ngValue]="size">
           {{ size }}
         </option>
       </select>
     </div>
   </div>
-<table class="table">
-  <thead class="thead-dark">
+  <div class="table-responsive-sm">
+<table class="table table-bordered table-condensed .mr-md-3 align-middle ">
+  <thead >
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Contact Number</th>
-      <th scope="col">Actions</th>
+      <th scope="col align-middle">#</th>
+      <th scope="col align-middle">Name</th>
+      <th scope="col align-middle">Email</th>
+      <th scope="col align-middle">Address</th>
+      <th scope="col align-middle">Contact Number</th>
+      <th scope="col align-middle">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -35,14 +41,14 @@
       <td>{{item.useraddress}}</td>
       <td>{{item.number}}</td>
 
-      <td><button type="submit" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
-        <button type="submit" (click)="onDelete(item.id)">Delete</button>
+      <td><button type="submit" class="btn btn-outline-primary" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
+      <button type="submit" (click)="onDelete(item.id)" class="btn btn-outline-danger">Delete</button>
       </td>
     </tr>
   </tbody>
 
 </table>
-
+</div>
 <div class="d-flex justify-content-center">
   <pagination-controls 
    
