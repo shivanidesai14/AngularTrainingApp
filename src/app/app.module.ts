@@ -8,7 +8,7 @@ import { CandidateModule } from "./candidate/candidate.module";
 import { CandidateRoutingModule } from "./candidate/candidate-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -26,7 +26,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CandidateRoutingModule,
     CandidateModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
    
   
   ],

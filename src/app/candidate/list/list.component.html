@@ -1,6 +1,9 @@
 <app-navbar></app-navbar>
 <div>
   <div class="d-flex flex-row-reverse bd-highlight mb-2">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
+    </div>
     <div class="p-2 bd-highlight">
       <select (change)="onTableSizeChange($event)" class="custom-select">
         <option *ngFor="let size of tableSizes" [ngValue]="size">
@@ -21,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data | paginate : {
+    <tr *ngFor="let item of data | filter:filterTerm | paginate : {
         itemsPerPage: tableSize,
         currentPage: page,
         totalItems: count

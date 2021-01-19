@@ -14,6 +14,7 @@ page = 1;
   count = 0;
   tableSize = 5;
   tableSizes = [5, 10, 15, 20];
+  filterTerm: any;
   constructor(private candidate : CandidateserviceService) {
 
     this.onfetchData();
