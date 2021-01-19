@@ -11,7 +11,7 @@ import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { UpdateCandidateComponent } from './update-candidate/update-candidate.component';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, ListComponent, NavbarComponent, AddCandidateComponent, UpdateCandidateComponent],
@@ -20,7 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CandidateRoutingModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   exports : [
     LoginComponent

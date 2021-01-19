@@ -1,25 +1,51 @@
 <app-navbar></app-navbar>
+<div>
+  <div class="d-flex flex-row-reverse bd-highlight mb-2">
+    <div class="p-2 bd-highlight">
+      <select (change)="onTableSizeChange($event)" class="custom-select">
+        <option *ngFor="let size of tableSizes" [ngValue]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Address</th>
-        <th scope="col">Contact Number</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of data">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.username}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.useraddress}}</td>
-        <td>{{item.number}}</td>
-   
-        <td><button type="submit" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
-          <button type="submit" (click)="onDelete(item.id)">Delete</button></td>
-      </tr>
-    </tbody>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data | paginate : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.username}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.useraddress}}</td>
+      <td>{{item.number}}</td>
+
+      <td><button type="submit" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
+        <button type="submit" (click)="onDelete(item.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+
 </table>
+
+<div class="d-flex justify-content-center">
+  <pagination-controls 
+   
+    previousLabel="Prev" 
+    nextLabel="Next" 
+    (pageChange)="onTableDataChange($event)">
+  </pagination-controls>
+</div>
+</div>

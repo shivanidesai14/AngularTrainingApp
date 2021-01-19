@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidateserviceService } from "../candidateservice.service";
-import { FormGroup,FormControl  } from "@angular/forms";
+
 
 @Component({
   selector: 'app-list',
@@ -10,13 +10,33 @@ import { FormGroup,FormControl  } from "@angular/forms";
 export class ListComponent implements OnInit {
 data:any = {};
 searchText : any
+page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [5, 10, 15, 20];
   constructor(private candidate : CandidateserviceService) {
 
-      this.candidate.getCandidate().subscribe(data=>{
-        this.data = data;
-      })
+    this.onfetchData();
+     
    }
+onfetchData()
+{
+  this.candidate.getCandidate().subscribe(data=>{
+    this.data = data;
+  })
+}
+onTableDataChange(event : any){
+  console.log(event);
+  this.page = event;
+  this.onfetchData();
+}  
 
+onTableSizeChange(event : any): void {
+
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.onfetchData();
+}  
   onDelete(id : any)
   {
       this.candidate.deleteCandidate(id).subscribe(data=>{
