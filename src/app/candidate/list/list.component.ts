@@ -24,6 +24,7 @@ onfetchData()
 {
   this.candidate.getCandidate().subscribe(data=>{
     this.data = data;
+    
   })
 }
 onTableDataChange(event : any){

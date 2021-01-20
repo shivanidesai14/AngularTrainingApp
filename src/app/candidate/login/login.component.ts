@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidateserviceService } from "../candidateservice.service";
 import { FormGroup,FormControl,Validators  } from "@angular/forms";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,9 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/)])
   
   })
-  constructor(private candidate : CandidateserviceService) { }
-
+  constructor(private candidate : CandidateserviceService, private router: Router) { }
+value : any
+flag:any = true;
   ngOnInit(): void {
   }
   get registerFormControl() {
@@ -27,15 +29,29 @@ export class LoginComponent implements OnInit {
   {
     this.submitted = true;
     if (this.candidateData.valid) {
-    console.log("data",this.candidateData.value.email);
+  
     this.candidate.getCandidate().subscribe(data=>{
-      this.data=data;
-     console.log(this.data);
-    
-      // if(this.candidateData.value.email == this.data.email && this.candidateData.value.password== this.data.password)
-      // {
-      //   console.log("login sucsssssfcessful");
-      // }
+     this.data=data;
+
+     for(let item of this.data)
+     {
+       if(item.email== this.candidateData.value.email && item.password == this.candidateData.value.password)
+       {
+            console.log("Logged in successfully");
+            this.flag=false;
+            localStorage.setItem("email",item.email);
+            this.router.navigate(['/list']);
+            break;
+            
+       }
+      
+     }
+     if(this.flag==true)
+     {
+       console.log("incooreect id & password")
+     }
+
+
     })
   }
   }
