@@ -12,6 +12,10 @@ import { UpdateCandidateComponent } from './update-candidate/update-candidate.co
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from "@angular/common/http";
+
+
+console.warn("candidate module loaded");
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, ListComponent, NavbarComponent, AddCandidateComponent, UpdateCandidateComponent],
@@ -21,10 +25,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   exports : [
-    LoginComponent
+   LoginComponent
   ]
 })
 export class CandidateModule { }

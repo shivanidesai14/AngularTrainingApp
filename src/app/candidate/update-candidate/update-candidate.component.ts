@@ -14,6 +14,8 @@ export class UpdateCandidateComponent implements OnInit {
   values = '';
   submitted = false;
   data: any = {};
+  errormessage : any;
+erormessage= "";
 
   updateCandidate = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -41,12 +43,16 @@ export class UpdateCandidateComponent implements OnInit {
 
   }
   collectCandidate() {
+    this.erormessage="";
     this.submitted = true;
     if (this.updateCandidate.valid) {
-      this.candidate.updateCandidate(this.actRoute.snapshot.params.id, this.updateCandidate.value).subscribe(data => {
+      this.candidate.updateCandidate(this.actRoute.snapshot.params.id, this.updateCandidate.value).subscribe((data) => {
         console.log("updated successfully");
         this.alert = true;
-       // this.updateCandidate.reset();
+      
+      },(error)=>{
+        this.errormessage=error;
+        console.error("error found in update component");
       })
     }
   }

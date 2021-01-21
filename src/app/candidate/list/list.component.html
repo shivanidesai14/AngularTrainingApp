@@ -41,7 +41,7 @@
       <td>{{item.useraddress}}</td>
       <td>{{item.number}}</td>
 
-      <td><button type="submit" class="btn btn-outline-primary" routerLink='/updateCandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
+      <td><button type="submit" class="btn btn-outline-primary" routerLink='/updatecandidate/{{item.id}}'>Update</button>&nbsp;&nbsp;
       <button type="submit" (click)="onDelete(item.id)" class="btn btn-outline-danger">Delete</button>
       </td>
     </tr>
@@ -57,4 +57,7 @@
     (pageChange)="onTableDataChange($event)">
   </pagination-controls>
 </div>
+</div>
+<div *ngIf="errormessage" class="alert alert-warning">
+  <strong>Warning!</strong> {{errormessage}}
 </div>

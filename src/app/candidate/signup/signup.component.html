@@ -82,8 +82,11 @@
         <div class="alert alert-success" role="alert" *ngIf="alert">
             Signed Up Successfully
            </div>
+           <div *ngIf="errormessage" class="alert alert-warning">
+            <strong>Warning!</strong> {{errormessage}}
+          </div>
     </form>
-    <div class="text-center">Already have an account? <a routerLink='/login'>Login here</a></div>
+    <div class="text-center">Already have an account? <a routerLink=''>Login here</a></div>
 </div>
 </body>
 </html>

@@ -1,17 +1,17 @@
-import { ConstantPool } from '@angular/compiler';
+
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./candidate/login/login.component";
-import { SignupComponent } from "./candidate/signup/signup.component";
-import { ListComponent } from './candidate/list/list.component';
-import { AddCandidateComponent } from './candidate/add-candidate/add-candidate.component';
-const routes: Routes = [
 
-  {path : 'login' , component:LoginComponent},
-  {path : '' , redirectTo : '/login' , pathMatch : 'full'},
- {path : 'signup' , component : SignupComponent},
- {path : 'list' , component:ListComponent},
- {path : 'addCandidate' , component : AddCandidateComponent}
+
+const routes: Routes = [  
+
+  {path : '' , component : LoginComponent},
+//{path: 'candidate',loadChildren :()=> import('./candidate/candidate.module').then(load => load.CandidateModule) },
+  
+
+
+ 
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ export class AddCandidateComponent implements OnInit {
   alert = false;
   values = '';
   submitted = false;
+  errormessage:any;
 
   constructor(private candidate:CandidateserviceService) {
    
@@ -36,12 +37,16 @@ export class AddCandidateComponent implements OnInit {
   }
   collectCandidate()
   {
+    this.errormessage="";
     this.submitted = true;
     if (this.addCandidate.valid) {
-      this.candidate.addCandidateDetails(this.addCandidate.value).subscribe(data =>{
+      this.candidate.addCandidateDetails(this.addCandidate.value).subscribe((data) =>{
         console.warn("candidate added successfully");
         this.alert=true;
         this.addCandidate.reset();
+       },(error)=>{
+         this.errormessage = error;
+         console.error("Error in add component");
        })
     }
    

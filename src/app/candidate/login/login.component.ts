@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(private candidate : CandidateserviceService, private router: Router) { }
 value : any
 flag:any = true;
+errormessage:any;
+incorrect:any=false;
   ngOnInit(): void {
   }
   get registerFormControl() {
@@ -30,7 +32,7 @@ flag:any = true;
     this.submitted = true;
     if (this.candidateData.valid) {
   
-    this.candidate.getCandidate().subscribe(data=>{
+    this.candidate.getCandidate().subscribe((data)=>{
      this.data=data;
 
      for(let item of this.data)
@@ -39,8 +41,9 @@ flag:any = true;
        {
             console.log("Logged in successfully");
             this.flag=false;
+            this.alert=true;
             localStorage.setItem("email",item.email);
-            this.router.navigate(['/list']);
+            this.router.navigate(['candidate/list']);
             break;
             
        }
@@ -48,10 +51,17 @@ flag:any = true;
      }
      if(this.flag==true)
      {
-       console.log("incooreect id & password")
+       this.incorrect=true;
+    
+       console.log("incooreect id & password");
      }
 
 
+    },(error)=>{
+        this.errormessage=error;
+        console.error("error in login component");
+        
+        
     })
   }
   }

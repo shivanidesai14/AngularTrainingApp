@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CandidateModule } from "./candidate/candidate.module";
 import { CandidateRoutingModule } from "./candidate/candidate-routing.module";
-import { HttpClientModule } from "@angular/common/http";
-import { NgxPaginationModule } from 'ngx-pagination';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 
@@ -25,9 +23,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbModule,
     CandidateRoutingModule,
     CandidateModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule
+  
+    
    
   
   ],

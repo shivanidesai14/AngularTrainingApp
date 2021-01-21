@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidateserviceService } from "../candidateservice.service";
 import { FormGroup,FormControl, Validators  } from "@angular/forms";
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class SignupComponent implements OnInit {
   alert = false;
   submitted = false;
-
+errormessage:any;
   candidateData = new FormGroup({
     username: new FormControl('', [Validators.required]),
     useraddress: new FormControl('', [Validators.required]),
@@ -21,7 +21,10 @@ export class SignupComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/)])
   })
   constructor(private candidate : CandidateserviceService, private route: ActivatedRoute,
-    private router: Router ) { }
+    private router: Router ) {
+    
+      
+     }
 
   ngOnInit(): void {
   }
@@ -31,12 +34,20 @@ export class SignupComponent implements OnInit {
 
   addCandidate()
   {
+    this.errormessage="";
     this.submitted = true;
     if (this.candidateData.valid) {
-      this.candidate.addCandidateDetails(this.candidateData.value).subscribe(data =>{
+      this.candidate.addCandidateDetails(this.candidateData.value).subscribe((data) =>{
         this.alert=true;
         this.candidateData.reset();
-        this.router.navigate(['/list']);
+        setTimeout (() => {
+          this.router.navigate(['/login']);
+       }, 1000);
+        
+      },(error)=>{
+        this.errormessage=error;
+        console.error("error in signup component");
+        
       })
     }
       

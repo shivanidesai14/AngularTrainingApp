@@ -73,6 +73,9 @@
       <div class="alert alert-success" role="alert" *ngIf="alert">
         Data successfully added
       </div>
+      <div *ngIf="errormessage" class="alert alert-warning">
+        <strong>Warning!</strong> {{errormessage}}
+      </div>
     </div>
   
   </form>

@@ -15,6 +15,7 @@ page = 1;
   tableSize = 5;
   tableSizes = [5, 10, 15, 20];
   filterTerm: any;
+  errormessage : any;
   constructor(private candidate : CandidateserviceService) {
 
     this.onfetchData();
@@ -22,9 +23,13 @@ page = 1;
    }
 onfetchData()
 {
-  this.candidate.getCandidate().subscribe(data=>{
+  this.errormessage="";
+  this.candidate.getCandidate().subscribe( (data) =>{
     this.data = data;
     
+  },(error)=>{
+    this.errormessage = error;
+    console.error('error caught in component')
   })
 }
 onTableDataChange(event : any){
@@ -41,14 +46,17 @@ onTableSizeChange(event : any): void {
 }  
   onDelete(id : any)
   {
-      this.candidate.deleteCandidate(id).subscribe(data=>{
-        this.candidate.getCandidate().subscribe(data=>{
-          this.data = data;
-        })
-        
+    this.errormessage=""
+      this.candidate.deleteCandidate(id).subscribe((data)=>{
+      this.onfetchData();
+        console.log('Delete successful')
+      },(error)=>{
+        this.errormessage = error;
+        console.error('error caught in component');
       })
   }
   ngOnInit(): void {
+   
   }
 
   

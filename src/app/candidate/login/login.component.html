@@ -51,6 +51,15 @@
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Login</button>
         </div>
+        <div class="alert alert-success" role="alert" *ngIf="alert">
+          Login Successfully
+         </div>
+         <div class="alert alert-danger" role="alert" *ngIf="incorrect">
+          Enter correct id and password
+         </div>
+         <div *ngIf="errormessage" class="alert alert-warning">
+          <strong>Warning!</strong> {{errormessage}}
+        </div>
         <div class="or-seperator"><b>or</b></div>
         <p class="hint-text">Login up with your social media account or email address</p>
 		<div class="social-btn text-center">
@@ -59,7 +68,7 @@
 			<a href="https://accounts.google.com/login/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
 		</div>
     </form>
-    <div class="text-center">Don't have an account? <a routerLink="/signup">Signup here</a></div>
+     <div class="text-center">Don't have an account? <a routerLink="/signup">Signup here</a></div>
 </div>
 </body>
 </html>
