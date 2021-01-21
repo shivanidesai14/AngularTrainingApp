@@ -43,7 +43,7 @@ incorrect:any=false;
             this.flag=false;
             this.alert=true;
             localStorage.setItem("email",item.email);
-            this.router.navigate(['candidate/list']);
+            this.router.navigate(['/list']);
             break;
             
        }
